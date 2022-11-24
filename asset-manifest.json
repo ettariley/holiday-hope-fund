@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/holiday-hope-fund/static/css/main.d26a7b3a.css",
+    "main.js": "/holiday-hope-fund/static/js/main.753c93cb.js",
+    "static/js/787.717c5924.chunk.js": "/holiday-hope-fund/static/js/787.717c5924.chunk.js",
+    "static/media/background.jpeg": "/holiday-hope-fund/static/media/background.13f943ab0375c78b721e.jpeg",
+    "static/media/food-preview.jpeg": "/holiday-hope-fund/static/media/food-preview.fa8013245c923c5b95f1.jpeg",
+    "static/media/gift-preview.jpeg": "/holiday-hope-fund/static/media/gift-preview.417ee0b2f9c399f4d8b6.jpeg",
+    "static/media/donate-preview.jpeg": "/holiday-hope-fund/static/media/donate-preview.d6675da4c48ceb3ebfff.jpeg",
+    "index.html": "/holiday-hope-fund/index.html",
+    "main.d26a7b3a.css.map": "/holiday-hope-fund/static/css/main.d26a7b3a.css.map",
+    "main.753c93cb.js.map": "/holiday-hope-fund/static/js/main.753c93cb.js.map",
+    "787.717c5924.chunk.js.map": "/holiday-hope-fund/static/js/787.717c5924.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d26a7b3a.css",
+    "static/js/main.753c93cb.js"
+  ]
+}
