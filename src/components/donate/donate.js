@@ -14,39 +14,48 @@ import './donate.css';
 function Donate(props) {
   const [open, setOpen] = useState(false);
 
-  const decreaseToys = (toys) => {
-    if (toys > 0) {
-      const amount = Number(toys) - 1;
+  const decreaseToys = () => {
+    if (props.toys > 0) {
+      const amount = Number(props.toys) - 1;
       props.setToys(amount);
       localStorage.setItem('toys', amount);
     }
   };
 
-  const increaseToys = (toys) => {
-    const amount = Number(toys) + 1;
+  const increaseToys = () => {
+    const amount = Number(props.toys) + 1;
     props.setToys(amount);
     localStorage.setItem('toys', amount);
   };
 
-  const decreaseFood = (food) => {
-    if (food > 0) {
-      const amount = Number(food) - 1;
+  const decreaseFood = () => {
+    if (props.food > 0) {
+      const amount = Number(props.food) - 1;
       props.setFood(amount);
       localStorage.setItem('food', amount);
     }
   };
 
-  const increaseFood = (food) => {
-    const amount = Number(food) + 1;
+  const increaseFood = () => {
+    const amount = Number(props.food) + 1;
     props.setFood(amount);
     localStorage.setItem('food', amount);
+  };
+
+  const setOtherAmount = (e) => {    
+    const amount = parseInt(e.target.value, 10);
+    const final = amount > 0 ? amount : 0;
+    props.setOtherAmount(final);
+    localStorage.setItem('otherAmount', final);    
   };
 
   const clearCart = () => {
     props.setToys(0);
     props.setFood(0);
     props.setOtherAmount(0);
-    localStorage.clear();
+    localStorage.removeItem('toys');
+    localStorage.removeItem('food');
+    localStorage.removeItem('otherAmount');
   };
   
   const getTotal = () => {
@@ -82,7 +91,7 @@ function Donate(props) {
                 <ListGroup horizontal className="m-2 justify-content-center">
                   <ListGroup.Item
                     action
-                    onClick={() => decreaseToys(props.toys)}
+                    onClick={() => decreaseToys()}
                     className="w-auto"
                   >
                     <i className="bi bi-dash"></i>
@@ -90,7 +99,7 @@ function Donate(props) {
                   <ListGroup.Item>{props.toys}</ListGroup.Item>
                   <ListGroup.Item
                     action
-                    onClick={(e) => increaseToys(props.toys)}
+                    onClick={(e) => increaseToys()}
                     className="w-auto"
                   >
                     <i className="bi bi-plus"></i>
@@ -116,7 +125,7 @@ function Donate(props) {
                 <ListGroup horizontal className="m-2 justify-content-center">
                   <ListGroup.Item
                     action
-                    onClick={() => decreaseFood(props.food)}
+                    onClick={() => decreaseFood()}
                     className="w-auto"
                   >
                     <i className="bi bi-dash"></i>
@@ -124,7 +133,7 @@ function Donate(props) {
                   <ListGroup.Item>{props.food}</ListGroup.Item>
                   <ListGroup.Item
                     action
-                    onClick={() => increaseFood(props.food)}
+                    onClick={() => increaseFood()}
                     className="w-auto"
                   >
                     <i className="bi bi-plus"></i>
@@ -158,13 +167,8 @@ function Donate(props) {
                       <InputGroup.Text>$</InputGroup.Text>
                       <Form.Control
                         type="number"
-                        value={parseInt(props.otherAmount)}
-                        onChange={(e) => {
-                            const amount = parseInt(e.target.value, 10);
-                            const final = amount > 0 ? amount : 0;
-                            props.setOtherAmount(final);
-                            localStorage.setItem('otherAmount', final);
-                          }
+                        value={props.otherAmount}
+                        onChange={(e) => setOtherAmount(e)
                         }
                         placeholder="Enter Amount"
                       />
@@ -182,7 +186,7 @@ function Donate(props) {
                 Clear Cart
               </Button>
             </div>
-            <DonateButton currency="USD" amount={getTotal()} />
+            <DonateButton amount={getTotal()} />
         </Row>
       </Container>
     </Fade>

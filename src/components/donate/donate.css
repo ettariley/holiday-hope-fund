@@ -12,9 +12,9 @@
 .total-row {
   background: white;
   width: 100%;
-  margin: 0 auto;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin: 0 auto !important;
+  margin-top: 25px !important;
+  margin-bottom: 25px !important;
   padding: 25px;
   border-radius: 5px;
 }

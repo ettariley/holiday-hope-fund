@@ -1,6 +1,6 @@
 .App {
-  min-height: 100vh;
-  padding: 0px;
+  min-height: calc(100vh - 303px);
+  padding: 25px 0px 50px 0px;
   background-image: url('assets/background.jpeg'), linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 98%);
   background-blend-mode: overlay;
   background-size: cover;

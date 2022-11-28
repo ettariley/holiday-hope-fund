@@ -14,7 +14,7 @@ function HeaderNav(props) {
 
   return (
     <>
-      <Navbar bg="transparent" expand="lg" fixed="top">
+      <Navbar bg="white" expand="lg" fixed="top">
         <Container>
           <Navbar.Brand>
             <Link className="navbar-brand" to='/'>Holiday Hope Fund</Link>

@@ -22,15 +22,12 @@ const OtherAmountCard = ({type, img, amount, setter}) => {
           as={Row}
           controlId="formOtherDonationAmount"
           className="m-2">
-          <Form.Label column sm="auto">
-            Amount:
-          </Form.Label>
           <Col>
             <InputGroup>
               <InputGroup.Text>$</InputGroup.Text>
               <Form.Control
                 type="number"
-                value={parseInt(amount)}
+                value={amount}
                 onChange={(e) => {
                     const int = parseInt(e.target.value, 10);
                     setter(int > 0 ? int : 0);
@@ -46,14 +43,15 @@ const OtherAmountCard = ({type, img, amount, setter}) => {
   );
 };
 
-const DonationAmountCard = ({type, img, amount, increase, decrease}) => {  
+const DonationAmountCard = ({type, img, amount, donationText, increase, decrease}) => {  
   return (
     <div className="donation-card">
       <div className="donation-card-img">
         <img src={img} alt="Donation"></img>
       </div>
       <div className="donation-card-body">
-        <h5 className="donation-card-title">{type}</h5>      
+        <h5 className="donation-card-title">{type}</h5>     
+        <h6>{donationText}</h6> 
         <ListGroup horizontal className="m-2 justify-content-center">             
           <ListGroup.Item
             action
@@ -103,9 +101,17 @@ const DonationCard = ({img, type, amount, setter}) => {
     saveToLocalStorage(type, amount);
   }
 
+  const donationText = (type) => {
+    switch(type) {
+      case "Toys": return "$25 Donation";
+      case "Food": return "$45 Donation";
+      default: return "";
+    }
+  }
+
   return type === "Other Amount" ? 
     <OtherAmountCard type={type} img={img} amount={amount} setter={saveOtherAmount} /> :
-    <DonationAmountCard type={type} img={img} amount={amount} decrease={decrease} increase={increase} />;
+    <DonationAmountCard type={type} img={img} amount={amount} donationText={donationText(type)} decrease={decrease} increase={increase} />;
 }
 
 function Cart(props) {
@@ -116,7 +122,9 @@ function Cart(props) {
     props.setToys(0);
     props.setFood(0);
     props.setOtherAmount(0);
-    localStorage.clear();
+    localStorage.removeItem('toys');
+    localStorage.removeItem('food');
+    localStorage.removeItem('otherAmount');
   };
   
   const getTotal = () => {
@@ -142,7 +150,7 @@ function Cart(props) {
               Clear Cart
             </Button>
           </div>
-          <DonateButton currency="USD" amount={getTotal()} />
+          <DonateButton amount={getTotal()} />
         </Offcanvas.Body>
       </Offcanvas>    
   );
