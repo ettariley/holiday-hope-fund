@@ -34,13 +34,13 @@ function HeaderNav(props) {
             </Nav>
             <Nav>
             <Button variant="link" onClick={handleShow}>
-              <i class="bi bi-gift-fill h5"></i>
+              <i className="bi bi-gift-fill h5"></i>
             </Button>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Cart show={show} handleClose={handleClose}/>
+      <Cart show={show} handleClose={handleClose} {...props}/>
     </>
     
   );

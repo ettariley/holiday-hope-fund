@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Routes,
   Route,
@@ -13,38 +13,19 @@ import './App.scss';
 
 function App() {
 
-  const getFood = () => {
-    if (!localStorage.getItem("food")) {
-      localStorage.setItem("food", '0');
-    }
-  };
-
-  const getToys = () => {
-    if (!localStorage.getItem("toys")) {
-      localStorage.setItem("toys", '0');
-    }
-  };
-
-  const getOtherAmount = () => {
-    if (!localStorage.getItem("otherAmount")) {
-      localStorage.setItem("otherAmount", '0');
-    }
-  };
-
-  useEffect(() => {
-    getFood();
-    getToys();
-    getOtherAmount();
-  }, [])
+  const [toys, setToys] = useState(localStorage.getItem('toys') || 0);
+  const [food, setFood] = useState(localStorage.getItem('food') || 0);
+  const [otherAmount, setOtherAmount] = useState(localStorage.getItem('otherAmount') || 0);
+  const props = { toys, setToys, food, setFood, otherAmount, setOtherAmount };
 
   return (
     <Container fluid className="App d-flex flex-column justify-content-between">
       <div>
-        <HeaderNav />
+        <HeaderNav {...props}/>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
-          <Route path='/donate' element={<Donate />} />
+          <Route path='/donate' element={<Donate {...props}/>} />
         </Routes>
       </div>
       <Footer />

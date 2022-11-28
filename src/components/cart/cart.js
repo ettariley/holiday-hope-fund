@@ -1,108 +1,150 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Button from 'react-bootstrap/Button';
-import { useNavigate } from 'react-router-dom';
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import CardGroup from 'react-bootstrap/CardGroup';
+import ListGroup from 'react-bootstrap/ListGroup';
 import './cart.css';
+import DonateButton from '../donate-button/donate-button';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-const DonateButton = ({ currency, amount }) => {
-  const amountRef = useRef(amount);
-
-  const donationSubmitted = () => {
-    alert("Donation successful! Thank you!");
-    localStorage.clear();
-  };
-
-  const donationCancelled = () => {
-    alert("We are so sad that you cancelled");
-  };
-
-  useEffect(() => {
-    amountRef.current = amount;
-  }, [amount]);
-
+const OtherAmountCard = ({type, img, amount, setter}) => {
   return (
-    <PayPalButtons
-      style={{ color: "white", label: "donate" }}
-      fundingSource={"paypal"}
-      createOrder={(data, actions) => {
-        return actions.order.create({
-          purchase_units: [
-            {
-              amount: {
-                value: amountRef.current,
-                breakdown: {
-                  item_total: {
-                    currency_code: currency,
-                    value: amountRef.current
+    <div className="donation-card">
+      <div className="donation-card-img">
+        <img src={img} alt="Donation"></img>
+      </div>
+      <div className="donation-card-body">
+        <h5 className="donation-card-title">{type}</h5>      
+        <Form.Group
+          as={Row}
+          controlId="formOtherDonationAmount"
+          className="m-2">
+          <Form.Label column sm="auto">
+            Amount:
+          </Form.Label>
+          <Col>
+            <InputGroup>
+              <InputGroup.Text>$</InputGroup.Text>
+              <Form.Control
+                type="number"
+                value={parseInt(amount)}
+                onChange={(e) => {
+                    const int = parseInt(e.target.value, 10);
+                    setter(int > 0 ? int : 0);
                   }
                 }
-              },
-              items: [
-                {
-                  name: "Holiday Hope Fund",
-                  description:
-                    "Donations benefit the Citizen Tribune's Holiday Hope Fund.",
-                  quantity: "1",
-                  unit_amount: {
-                    currency_code: currency,
-                    value: amountRef.current
-                  },
-                  category: "DONATION"
-                }
-              ]
-            }
-          ]
-        });
-      }}
-      onApprove={() => donationSubmitted()}
-      onCancel={() => donationCancelled()}
-    />
+                placeholder="Enter Amount"
+              />
+            </InputGroup>
+          </Col>
+        </Form.Group>
+      </div>
+    </div>
   );
 };
 
+const DonationAmountCard = ({type, img, amount, increase, decrease}) => {  
+  return (
+    <div className="donation-card">
+      <div className="donation-card-img">
+        <img src={img} alt="Donation"></img>
+      </div>
+      <div className="donation-card-body">
+        <h5 className="donation-card-title">{type}</h5>      
+        <ListGroup horizontal className="m-2 justify-content-center">             
+          <ListGroup.Item
+            action
+            onClick={() => decrease(amount)}
+            className="w-auto">
+            <i className="bi bi-dash"></i>
+          </ListGroup.Item>        
+          <ListGroup.Item>{amount}</ListGroup.Item>   
+          <ListGroup.Item
+            action
+            onClick={(e) => increase(amount)}
+            className="w-auto">
+            <i className="bi bi-plus"></i>
+          </ListGroup.Item>            
+        </ListGroup>
+      </div>
+    </div>
+  );
+};
+
+const DonationCard = ({img, type, amount, setter}) => {
+
+  const saveToLocalStorage = (type, amount) => {
+    switch(type) {
+      case "Toys": localStorage.setItem('toys', amount); break;
+      case "Food": localStorage.setItem('food', amount); break;
+      case "Other Amount": localStorage.setItem('otherAmount', amount); break;
+      default: break;
+    }
+  }
+
+  const decrease = (amount) => {
+    if (amount > 0) {
+      amount--;
+      setter(amount);
+      saveToLocalStorage(type, amount);
+    }
+  };
+  const increase = (amount) => {
+    amount++;
+    setter(amount);
+    saveToLocalStorage(type, amount);
+  };
+
+  const saveOtherAmount = (amount) => {
+    setter(amount);
+    saveToLocalStorage(type, amount);
+  }
+
+  return type === "Other Amount" ? 
+    <OtherAmountCard type={type} img={img} amount={amount} setter={saveOtherAmount} /> :
+    <DonationAmountCard type={type} img={img} amount={amount} decrease={decrease} increase={increase} />;
+}
+
 function Cart(props) {
   const show = props.show;
-  const toys = localStorage.getItem("toys") || 0;
-  const food = localStorage.getItem("food") || 0 ;
-  const otherAmount = localStorage.getItem("otherAmount") || 0;
   const { handleClose } = props;
-  const navigate = useNavigate();
 
-  const toyDonation = Number(toys) * 25;
-  const foodDonation = Number(food) * 45;
-  const totalDonation = Number(toyDonation) + Number(foodDonation) + Number(otherAmount);
-
-  const returnToDonate = () => {
-    navigate("/donate");
-    handleClose();
-  }
+  const clearCart = () => {
+    props.setToys(0);
+    props.setFood(0);
+    props.setOtherAmount(0);
+    localStorage.clear();
+  };
   
+  const getTotal = () => {
+    return (Number(props.toys) * 25) + 
+           (Number(props.food) * 45) + 
+           Number(props.otherAmount);
+  };
+
   return (
-    <PayPalScriptProvider
-      options={{
-        "client-id": "Aas4zEAuLX4YUnRUfetEzejdLHsijT9yYjRzsWdXMH3Pg1vUj_zMzuL8RO1xBE9ybfYTnaMOEjhZ_-lX",
-        components: "buttons",
-        currency: "USD",
-      }}>
       <Offcanvas show={show} onHide={handleClose} placement="end" className="cart">
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Shopping Cart</Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body>
-          <p>Toys: ${toyDonation}</p>
-          <p>Food: ${foodDonation}</p>
-          <p>Other Donation: ${otherAmount}</p>
-          <p>Total: ${totalDonation}</p>
-
-          <Button onClick={() => returnToDonate()}>
-            Edit Cart
-          </Button>
-          <DonateButton currency="USD" amount={totalDonation} />
+        <Offcanvas.Body>              
+          <CardGroup className="donation-card-group">
+            <DonationCard img={require('../../assets/gift-preview.jpeg')} type="Toys" amount={props.toys} setter={props.setToys} />
+            <DonationCard img={require('../../assets/food-preview.jpeg')} type="Food" amount={props.food} setter={props.setFood}/>
+            <DonationCard img={require('../../assets/donate-preview.jpeg')} type="Other Amount" amount={props.otherAmount} setter={props.setOtherAmount}/>
+          </CardGroup>
+          <div className="cart-total">
+            <h5>Total: ${getTotal()}</h5>
+            <Button onClick={() => clearCart()}>
+              Clear Cart
+            </Button>
+          </div>
+          <DonateButton currency="USD" amount={getTotal()} />
         </Offcanvas.Body>
-      </Offcanvas>
-    </PayPalScriptProvider>
-    
+      </Offcanvas>    
   );
 }
 

@@ -9,3 +9,12 @@
 .card-col {
   min-height: 100%;
 }
+.total-row {
+  background: white;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding: 25px;
+  border-radius: 5px;
+}

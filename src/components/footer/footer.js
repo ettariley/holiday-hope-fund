@@ -9,8 +9,8 @@ function Footer() {
       <Row className="pt-1">
         {/* FB and Email here */}
         <Col md="3">
-          <a href="https://www.facebook.com/mhcentralservices" target="_blank"><i class="bi bi-facebook h1 p-1"></i></a>
-          <a href='mailto:mhcentralservicesinc@gmail.com' target="_blank"><i class="bi fi bi-envelope-fill h1 p-1"></i></a>
+          <a href="https://www.facebook.com/mhcentralservices" target="_blank" rel="noreferrer"><i className="bi bi-facebook h1 p-1"></i></a>
+          <a href='mailto:mhcentralservicesinc@gmail.com' target="_blank" rel="noreferrer"><i className="bi fi bi-envelope-fill h1 p-1"></i></a>
         </Col>
         {/* contact */}
         <Col md="6" className="text-center">
@@ -37,14 +37,14 @@ function Footer() {
         </Col>
         {/* to the top option */}
         <Col md="3" className="text-end">
-          <i class="bi bi-arrow-up-circle-fill h1"></i>
+          <i className="bi bi-arrow-up-circle-fill h1"></i>
         </Col>
       </Row>
       <Row className="justify-content-center mt-3">
         {/* my info */}
         <Col sm="4" className="border-top border-primary text-center align-items-center pt-2 pb-2">
             <div>
-              <i class="bi bi-c-circle"></i> 2022 Etta Haselden
+              <i className="bi bi-c-circle"></i> 2022 Etta Haselden
             </div>
         </Col>
       </Row>
