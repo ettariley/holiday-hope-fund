@@ -20,8 +20,14 @@ function Home() {
           <h3>The Citizen Tribune's</h3>
           <h2>Holiday Hope Fund</h2>
           <h4>Keeping the magic of Christmas alive in Hamblen County</h4>
-          <p>Since 1983, the Holiday Hope Fund has provided toys for children and food baskets for lower income families and individuals during the Christmas holidays.
-            HHF encompasses the Hamblen County Toy program, Presents for Pre-Teens, and Teen-Angels, providing toys and gifts for children ages 1-13. An estimated 2,000 families are served each year. 
+          <p>Since 1983, the Citizen Tribune's Holiday Hope Fund has provided toys for children and food baskets for lower income families and individuals during the Christmas holidays.
+            The Holiday Hope Fund encompasses the Hamblen County Toy program, Presents for Pre-Teens, and Teen-Angels, providing toys and gifts for children ages 1-13. An estimated 2,000 families are served each year. 
+          </p>
+          <p>
+          It was designed to be the community’s one unified holiday program that provided toys and food to families in need, administered by Morristown-Hamblen Central Services. Since then, it has grown to include Angel Trees scattered around town, fundraising efforts to help purchase food, and countless other generous donations and volunteer contributions from citizens like you. Fundraising efforts help with the purchase of Christmas food baskets that include more than just a Christmas meal. Often, these food baskets feed a senior for days beyond the holiday. We also collect toys through the angel tree program so that children in need don’t miss out on the magical Christmas experience most of us know well. 
+          </p>
+          <p>
+            We hope that you will consider helping us make this Christmas season a little brighter for those in need, however you're able.
           </p>
         </Row>
         <Row>

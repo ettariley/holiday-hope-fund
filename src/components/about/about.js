@@ -34,22 +34,23 @@ function About() {
           <Col>
             <h3>Volunteers</h3>
             <p>We welcome volunteers of all ages throughout the Christmas season!</p>
-            <p>Volunteer Opportunities:</p>
+            <h5>Volunteer Opportunities:</h5>
             <ul>
               <li>Preparing for and Packing "Santa's Sleigh"</li>
               <li>Distributing toys and food</li>
               <li>Assisting with other agency program areas during the holiday season</li>
             </ul>
+            <h6>Please contact Central Serivces's office at <a href="tel:+">423-586-9431</a> to schedule a time to volunteer.</h6>
           </Col>
         </Row>
         <Row>
           <Col>
             <h3>About Central Services</h3>
-            <p>Info goes here.</p>
+            <p><a href="https://www.mhcentralservices.org/" target="_blank">Morristown-Hamblen Central Services</a> has been serving Hamblen County residents for over 50 years. A community-funded, community-focused agency, Central Services provides a food pantry, emergency rent & utility services, a thrift store, and many other programs. We love to partner with other agencies to provide the best services to our neighbors.</p>
           </Col>
           <Col>
             <h3>Our Sponsors</h3>
-            <p>Info goes here.</p>
+            <h6><a href="https://www.citizentribune.com/">The Citizen Tribune</a></h6>
           </Col>
         </Row>
         <Row>
