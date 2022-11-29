@@ -12,8 +12,8 @@ function Footer() {
       <Container className="footer-container">
         <div className="footer-grid">
           <div className="g1">
-            <h4>Hamblen County Holiday Hope Fund</h4>
-            <p>Keep the magic of Christmas alive by Donating Food and Toys to lower income families in Hamblen County!</p>
+            <h4>The Holiday Hope Fund</h4>
+            <p>Keep the magic of Christmas alive for all our neighbors in Hamblen County!</p>
             <div className="footer-social">
                 <a href="https://www.facebook.com/mhcentralservices" target="_blank" rel="noreferrer"><i className="bi bi-facebook h3 p-1"></i></a>
                 <a href='mailto:mhcentralservicesinc@gmail.com'><i className="bi fi bi-envelope-fill h2 p-1"></i></a>

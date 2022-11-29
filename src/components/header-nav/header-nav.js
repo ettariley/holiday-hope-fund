@@ -14,10 +14,10 @@ function HeaderNav(props) {
 
   return (
     <>
-      <Navbar bg="white" expand="lg" fixed="top">
+      <Navbar collapseOnSelect bg="white" expand="md" fixed="top">
         <Container>
           <Navbar.Brand>
-            <Link className="navbar-brand" to='/'>Holiday Hope Fund</Link>
+            <Link className="navbar-brand display-6" to='/'>Holiday Hope Fund</Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -33,9 +33,9 @@ function HeaderNav(props) {
               </Nav.Link>
             </Nav>
             <Nav>
-            <Button variant="link" onClick={handleShow}>
-              <i className="bi bi-gift-fill h5"></i>
-            </Button>
+              <Button className="p-0 me-auto" variant="link" onClick={handleShow}>
+                <i className="bi bi-gift-fill h4"></i>
+              </Button>
             </Nav>
           </Navbar.Collapse>
         </Container>

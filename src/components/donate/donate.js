@@ -16,16 +16,14 @@ function Donate(props) {
 
   const decreaseToys = () => {
     if (props.toys > 0) {
-      const amount = Number(props.toys) - 1;
-      props.setToys(amount);
-      localStorage.setItem('toys', amount);
+      props.setToys(Number(props.toys) - 1);
+      localStorage.setItem('toys', props.toys);
     }
   };
 
   const increaseToys = () => {
-    const amount = Number(props.toys) + 1;
-    props.setToys(amount);
-    localStorage.setItem('toys', amount);
+    props.setToys(Number(props.toys) + 1);
+    localStorage.setItem('toys', props.toys);
   };
 
   const decreaseFood = () => {
@@ -71,22 +69,22 @@ function Donate(props) {
 
   return (
     <Fade in={open}>
-      <Container className="donate text-center">
-        <h2>Shop the Angel Tree</h2>
+      <Container className="text-center mt-5">
+        <h2 className='display-6'>Shop the Angel Tree</h2>
+        <p className='fs-5 ps-5 pe-5'>If you prefer to do your Christmas shopping online, you've come to the right place! Shop our virtual Angel Tree as a donation to the Holiday Hope Fund.</p>
         <Row>
           {/* Toy card */}
-          <Col>
+          <Col xs='12' md='4' className='mt-2 mb-2'>
             <Card className='card-col'>
               <Card.Img
                 variant="top"
-                src={require('../../assets/gift-preview.jpeg')}
+                src={require('../../assets/gift.jpeg')}
               />
-              <Card.Body>
+              <Card.Body className='d-flex flex-column justify-content-between'>
                 <Card.Title>Sponsor a Child's Toys</Card.Title>
                 <Card.Subtitle>$25.00 Donation</Card.Subtitle>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                <Card.Text className='pt-2'>
+                  Help us fulfill a local child's Christmas wish. We'll take care of the shopping for you!
                 </Card.Text>
                 <ListGroup horizontal className="m-2 justify-content-center">
                   <ListGroup.Item
@@ -109,18 +107,17 @@ function Donate(props) {
             </Card>
           </Col>
           {/* Food box card */}
-          <Col>
+          <Col xs='12' md='4' className='mt-2 mb-2'>
             <Card className='card-col'>
               <Card.Img
                 variant="top"
-                src={require('../../assets/food-preview.jpeg')}
+                src={require('../../assets/food.jpeg')}
               />
-              <Card.Body>
+              <Card.Body className='d-flex flex-column justify-content-between'>
                 <Card.Title>Sponsor a Food Box</Card.Title>
                 <Card.Subtitle>$45.00 Donation</Card.Subtitle>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                <Card.Text className='pt-2'>
+                  We partner with local grocery stores to provide the makings of a delicious Christmas dinner.
                 </Card.Text>
                 <ListGroup horizontal className="m-2 justify-content-center">
                   <ListGroup.Item
@@ -143,25 +140,21 @@ function Donate(props) {
             </Card>
           </Col>
           {/* donate any amount card */}
-          <Col className='card-col'>
+          <Col xs='12' md='4' className='card-col mt-2 mb-2'>
             <Card className='card-col'>
               <Card.Img
                 variant="top"
-                src={require('../../assets/donate-preview.jpeg')}
+                src={require('../../assets/donate.jpeg')}
               />
               <Card.Body className='d-flex flex-column justify-content-between'>
                 <Card.Title>Donate a Custom Amount</Card.Title>
                 <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  A donation of any size, large or small, helps us reach our fundraising goal!
                 </Card.Text>
                 <Form.Group
                   as={Row}
                   controlId="formOtherDonationAmount"
                   className="m-2">
-                  <Form.Label column sm="auto">
-                    Amount:
-                  </Form.Label>
                   <Col>
                     <InputGroup>
                       <InputGroup.Text>$</InputGroup.Text>
@@ -179,14 +172,14 @@ function Donate(props) {
             </Card>
           </Col>
         </Row>
-        <Row className="total-row">
-            <div className="cart-total">
-              <h2>Total: ${getTotal()}</h2>
-              <Button onClick={() => clearCart()}>
-                Clear Cart
-              </Button>
-            </div>
-            <DonateButton amount={getTotal()} />
+        <Row className="bg-light rounded p-2 mt-4 ms-auto me-auto">
+          <Col>
+            <h2>Total: ${getTotal()}</h2>
+            <DonateButton amount={getTotal()} {...props} />
+            <Button className='mt-1' variant="outline-primary" onClick={() => clearCart()}>
+              Clear Cart
+            </Button>
+          </Col>
         </Row>
       </Container>
     </Fade>

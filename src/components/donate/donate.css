@@ -1,20 +1,7 @@
-.donate {
-  margin-top: 80px;
-}
-
 .donate-lgi {
   width: auto;
 }
 
 .card-col {
   min-height: 100%;
-}
-.total-row {
-  background: white;
-  width: 100%;
-  margin: 0 auto !important;
-  margin-top: 25px !important;
-  margin-bottom: 25px !important;
-  padding: 25px;
-  border-radius: 5px;
 }

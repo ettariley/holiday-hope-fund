@@ -136,21 +136,23 @@ function Cart(props) {
   return (
       <Offcanvas show={show} onHide={handleClose} placement="end" className="cart">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Shopping Cart</Offcanvas.Title>
+          <Offcanvas.Title className="display-6">Shopping Cart</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>              
           <CardGroup className="donation-card-group">
-            <DonationCard img={require('../../assets/gift-preview.jpeg')} type="Toys" amount={props.toys} setter={props.setToys} />
-            <DonationCard img={require('../../assets/food-preview.jpeg')} type="Food" amount={props.food} setter={props.setFood}/>
-            <DonationCard img={require('../../assets/donate-preview.jpeg')} type="Other Amount" amount={props.otherAmount} setter={props.setOtherAmount}/>
+            <DonationCard img={require('../../assets/gift.jpeg')} type="Toys" amount={props.toys} setter={props.setToys} />
+            <DonationCard img={require('../../assets/food.jpeg')} type="Food" amount={props.food} setter={props.setFood}/>
+            <DonationCard img={require('../../assets/donate.jpeg')} type="Other Amount" amount={props.otherAmount} setter={props.setOtherAmount}/>
           </CardGroup>
-          <div className="cart-total">
-            <h5>Total: ${getTotal()}</h5>
-            <Button onClick={() => clearCart()}>
-              Clear Cart
-            </Button>
-          </div>
-          <DonateButton amount={getTotal()} />
+          <Row className="bg-light text-center rounded p-2 mt-4 ms-auto me-auto">
+            <Col>
+              <h5 className="mb-1">Total: ${getTotal()}</h5>
+              <DonateButton amount={getTotal()} {...props} />
+              <Button className='mt-1' variant="outline-primary" onClick={() => clearCart()}>
+                Clear Cart
+              </Button>
+            </Col>
+          </Row>
         </Offcanvas.Body>
       </Offcanvas>    
   );

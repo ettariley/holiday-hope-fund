@@ -15,11 +15,13 @@ function Home() {
 
   return (
     <Fade in={open}>  
-      <Container className="home text-center">
+      <Container className="home text-center mt-5">
         <Row>
           <h3>The Citizen Tribune's</h3>
-          <h2>Holiday Hope Fund</h2>
+          <h6 className="display-6">Holiday Hope Fund</h6>
           <h4>Keeping the magic of Christmas alive in Hamblen County</h4>
+        </Row>
+        <Row className="p-2 pt-3 bg-light bg-opacity-75">
           <p>Since 1983, the Citizen Tribune's Holiday Hope Fund has provided toys for children and food baskets for lower income families and individuals during the Christmas holidays.
             The Holiday Hope Fund encompasses the Hamblen County Toy program, Presents for Pre-Teens, and Teen-Angels, providing toys and gifts for children ages 1-13. An estimated 2,000 families are served each year. 
           </p>
@@ -29,8 +31,6 @@ function Home() {
           <p>
             We hope that you will consider helping us make this Christmas season a little brighter for those in need, however you're able.
           </p>
-        </Row>
-        <Row>
           <h3>How can you help?</h3>
           <ul>
             <li>
