@@ -5,7 +5,6 @@ import ErrorModal from "../modals/error-modal";
 import SuccessModal from "../modals/success-modal";
 
 const PaypalButton = (props) => {  
-  console.log(props.amount);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showCancel, setShowCancel] = useState(false);
   const [showError, setShowError] = useState(false);
@@ -35,12 +34,18 @@ const PaypalButton = (props) => {
   };
 
   const donationError = (err) => {
-    if (props.amount === 0) alert("Please add items to your cart before donating.");
+    if (getTotal() === 0) alert("Please add items to your cart before donating.");
     else handleShowError();
     console.debug(err);
   };
+  
+  const getTotal = () => {
+    return (props.toys * 25) + 
+           (props.food * 45) + 
+           props.otherAmount;
+  };
 
-  console.debug('paypal donation amount: $' + props.amount);
+  console.debug('paypal donation amount: $' + getTotal());
 
   return (
     <>
@@ -53,16 +58,17 @@ const PaypalButton = (props) => {
           <PayPalButtons
               style={{ color: "silver", label: "donate" }}
               fundingSource={"paypal"}
+              forceReRender={[getTotal()]}
               createOrder={(data, actions) => {
               return actions.order.create({
                   purchase_units: [
                   {
                       amount: {
-                      value: props.amount,
+                      value: getTotal(),
                       breakdown: {
                           item_total: {
                           currency_code: "USD",
-                          value: props.amount
+                          value: getTotal()
                           }
                       }
                       },
@@ -74,7 +80,7 @@ const PaypalButton = (props) => {
                           quantity: "1",
                           unit_amount: {
                           currency_code: "USD",
-                          value: props.amount
+                          value: getTotal()
                           },
                           category: "DONATION"
                       }
@@ -95,8 +101,8 @@ const PaypalButton = (props) => {
   );
 };
 
-const DonateButton = (props) => {  
-    return props.amount > 0 ? (<PaypalButton {...props} />) : null;
+const DonateButton = (props) => {
+  return props.amount > 0 ? (<PaypalButton {...props} />) : null;
 };
   
 export default DonateButton;
