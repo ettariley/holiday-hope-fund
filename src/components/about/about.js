@@ -42,6 +42,8 @@ function About() {
               <Accordion.Header>Our Sponsors</Accordion.Header>
               <Accordion.Body>
                 <a href="https://www.citizentribune.com/">The Citizen Tribune</a>
+                <br></br>
+                <a href="https://www.easttennesseefoundation.org/scholarships-grants/grants/competitive-grants-and-loans-by-name/laura-j-kress-angel-tree-fund">Laura J. Kress Angel Tree Fund - East Tennessee Foundation</a>
               </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey="3">

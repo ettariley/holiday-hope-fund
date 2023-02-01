@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-holidayhopefund-dev-11424-authRole",
+      "UnauthRoleArn": "arn:aws:iam::921891966581:role/amplify-holidayhopefund-dev-11424-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::921891966581:role/amplify-holidayhopefund-dev-11424-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-holidayhopefund-dev-11424-deployment",
+      "UnauthRoleName": "amplify-holidayhopefund-dev-11424-unauthRole",
+      "StackName": "amplify-holidayhopefund-dev-11424",
+      "StackId": "arn:aws:cloudformation:us-east-1:921891966581:stack/amplify-holidayhopefund-dev-11424/493663c0-6fad-11ed-aef4-0e93645bbbab",
+      "AmplifyAppId": "d3m7vei18dfhjg"
+    },
+    "categories": {
+      "hosting": {
+        "S3AndCloudFront": {}
+      }
+    }
+  }
+}
