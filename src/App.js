@@ -5,6 +5,7 @@ import HeaderNav from './components/header-nav/header-nav';
 import About from './components/about/about';
 import Home from './components/home/home';
 import Donate from './components/donate/donate';
+import Signups from './components/signups/signups';
 import Footer from './components/footer/footer';
 import './App.scss';
 
@@ -24,6 +25,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
             <Route path='/donate' element={<Donate {...cartState}/>} />
+            <Route path='/signups' element={<Signups />} />
           </Routes>
         </Container>
         <Footer />

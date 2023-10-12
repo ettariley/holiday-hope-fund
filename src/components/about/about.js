@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Fade from 'react-bootstrap/Fade';
 import Accordion from 'react-bootstrap/Accordion';
+import { Link } from 'react-router-dom';
+import './about.css';
+import Signups from "../signups/signups";
 
 function About() {
   const [open, setOpen] = useState(false);
@@ -64,11 +66,19 @@ function About() {
             <Accordion.Item eventKey="4">
               <Accordion.Header>Participants</Accordion.Header>
               <Accordion.Body>
-                Sign ups to receive food and/or toys have closed. If you're already signed up and have questions, please contact our office at <a href="tel:+">423-586-9431</a>.
+                Sign ups to receive food and/or toys are on the following dates:<br></br>
+                <ul>
+                  <li>October 26 & 27, 9:00 AM - 4:00 PM</li>
+                  <li>November 2 & 3, 9:00 AM - 4:00 PM</li>
+                  <li>November 4, 8:00 AM - 12:00 PM</li>
+                </ul>
+                Please see our flyers <Link to="/signups">here</Link> for further information on what to bring and where sign ups are located. The flyer is available in English and Spanish.<br></br>
+                If you have any questions, please contact our office at <a href="tel:+">423-586-9431</a>.
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
         </Row>
+        <Row className="about-page-extra"></Row>
       </Container>
     </Fade>
   );

@@ -28,7 +28,10 @@ function HeaderNav(props) {
               <Nav.Link eventKey='2' as={Link} to="/about">
                 About
               </Nav.Link>
-              <Nav.Link eventKey='3' as={Link} to="/donate">
+              <Nav.Link eventKey='3' as={Link} to="/signups">
+                Sign-Ups
+              </Nav.Link>
+              <Nav.Link eventKey='4' as={Link} to="/donate">
                 Shop the Angel Tree
               </Nav.Link>
             </Nav>
