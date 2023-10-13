@@ -22,7 +22,7 @@ function Home() {
           <h4>Keeping the magic of Christmas alive in Hamblen County</h4>
         </Row>
         <Row className="p-2 pt-3 bg-light bg-opacity-75">
-          <p>Since 1983, the Citizen Tribune's Holiday Hope Fund has provided toys for children and food baskets for lower income families and individuals during the Christmas holidays.
+          <p>Since 1969, the Citizen Tribune's Holiday Hope Fund has provided toys for children and food baskets for lower income families and individuals during the Christmas holidays.
             The Holiday Hope Fund encompasses the Hamblen County Toy program, Presents for Pre-Teens, and Teen-Angels, providing toys and gifts for children ages 1-13. An estimated 2,000 families are served each year. 
           </p>
           <p>
