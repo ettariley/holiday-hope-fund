@@ -103,8 +103,8 @@ const DonationCard = ({img, type, amount, setter}) => {
 
   const donationText = (type) => {
     switch(type) {
-      case "Toys": return "$25 Donation";
-      case "Food": return "$45 Donation";
+      case "Toys": return "$30 Donation";
+      case "Food": return "$50 Donation";
       default: return "";
     }
   }
@@ -128,8 +128,8 @@ function Cart(props) {
   };
   
   const getTotal = () => {
-    return (Number(props.toys) * 25) + 
-           (Number(props.food) * 45) + 
+    return (Number(props.toys) * 30) + 
+           (Number(props.food) * 50) + 
            Number(props.otherAmount);
   };
 

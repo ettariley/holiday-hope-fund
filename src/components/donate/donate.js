@@ -146,8 +146,8 @@ function Donate(props) {
   };
   
   const getTotal = () => {
-    return (Number(props.toys) * 25) + 
-           (Number(props.food) * 45) + 
+    return (Number(props.toys) * 30) + 
+           (Number(props.food) * 50) + 
            Number(props.otherAmount);
   };
 
@@ -168,7 +168,7 @@ function Donate(props) {
               img={require('../../assets/gift.jpeg')} 
               type="Toys"
               title="Sponsor a Child's Toys" 
-              subtitle="$25.00 Donation" 
+              subtitle="$30.00 Donation" 
               text="Help us fulfill a local child's Christmas wish. We'll take care of the shopping for you!" 
               amount={props.toys}
               setter={props.setToys} />            
@@ -179,7 +179,7 @@ function Donate(props) {
               img={require('../../assets/food.jpeg')} 
               type="Food"
               title="Sponsor a Food Box" 
-              subtitle="$45.00 Donation" 
+              subtitle="$50.00 Donation" 
               text="We partner with local grocery stores to provide the makings of a delicious Christmas dinner." 
               amount={props.food}
               setter={props.setFood} />              
@@ -198,7 +198,7 @@ function Donate(props) {
         <Row className="bg-light rounded p-2 mt-4 ms-auto me-auto">
           <Col>
             <h2>Total: ${getTotal()}</h2>
-            <DonateButton amount={getTotal()} {...props} />
+              <DonateButton amount={getTotal()} {...props} />
             <Button className='mt-1' variant="outline-primary" onClick={() => clearCart()}>
               Clear Cart
             </Button>

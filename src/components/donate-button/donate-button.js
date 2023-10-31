@@ -40,8 +40,8 @@ const PaypalButton = (props) => {
   };
   
   const getTotal = () => {
-    return (props.toys * 25) + 
-           (props.food * 45) + 
+    return (props.toys * 30) + 
+           (props.food * 50) + 
            props.otherAmount;
   };
 
