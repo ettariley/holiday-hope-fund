@@ -7,6 +7,7 @@ import Home from './components/home/home';
 import Donate from './components/donate/donate';
 import Signups from './components/signups/signups';
 import Footer from './components/footer/footer';
+import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import './App.scss';
 
 function App() {
@@ -17,19 +18,25 @@ function App() {
   const [otherAmount, setOtherAmount] = useState(localStorage.getItem('otherAmount') || 0);
   const cartState = { toys, setToys, food, setFood, otherAmount, setOtherAmount };
 
+  const paypalOptions = {
+    "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID,
+    currency: "USD",
+    components: "buttons",
+  }
+
   return (
-      <div>
-        <HeaderNav {...cartState}/>
-        <Container fluid className="App d-flex flex-column justify-content-between">
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/donate' element={<Donate {...cartState}/>} />
-            <Route path='/signups' element={<Signups />} />
-          </Routes>
-        </Container>
-        <Footer />
-      </div>
+        <PayPalScriptProvider options={paypalOptions}>
+          <HeaderNav {...cartState}/>
+          <Container fluid className="App d-flex flex-column justify-content-between">
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/about' element={<About />} />
+              <Route path='/donate' element={<Donate {...cartState}/>} />
+              <Route path='/signups' element={<Signups />} />
+            </Routes>
+          </Container>
+          <Footer />
+        </PayPalScriptProvider>
   );
 }
 
